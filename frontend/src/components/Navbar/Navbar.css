@@ -1,0 +1,12 @@
+.navbar-custom {
+    padding: 1rem;
+  }
+  
+  .navbar-custom .nav-link {
+    margin: 0 0.5rem;
+  }
+  
+  .navbar-custom .btn {
+    margin-left: 0.5rem;
+  }
+  
