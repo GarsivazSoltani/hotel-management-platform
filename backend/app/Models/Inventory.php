@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Inventory extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'product_id', // اضافه کردن product_id به fillable
+        // سایر فیلدهایی که می‌خواهید بتوانید به صورت انبوه (mass) آپدیت یا ایجاد کنید
+    ];
     
     public function product()
     {

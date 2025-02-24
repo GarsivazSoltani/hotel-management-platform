@@ -15,9 +15,6 @@ Route::get('/user', function (Request $request) {
 Route::post('/test', [TestController::class, 'handle']);
 
 
-Route::post('/inventories', [InventoryController::class, 'store']);
-Route::post('/inventory-changes', [InventoryChangeController::class, 'store']);
-
 // Route::post('/warehouses', [WarehouseController::class, 'store']);
 Route::prefix('warehouses')->group(function () {
     Route::get('/', [WarehouseController::class, 'index']); // نمایش لیست انبارها
@@ -27,8 +24,25 @@ Route::prefix('warehouses')->group(function () {
     Route::delete('{id}', [WarehouseController::class, 'destroy']); // حذف انبار
 });
 
-
 // Route::post('/products', [ProductController::class, 'store']);
 Route::apiResource('products', ProductController::class);
 
+// Route::post('/inventories', [InventoryController::class, 'store']);
+Route::prefix('inventories')->group(function () {
+    Route::get('/', [InventoryController::class, 'index']); // نمایش لیست موجودی‌ها
+    Route::post('/', [InventoryController::class, 'store']); // ایجاد موجودی جدید
+    Route::get('{id}', [InventoryController::class, 'show']); // نمایش موجودی خاص
+    Route::put('{id}', [InventoryController::class, 'update']); // ویرایش موجودی
+    Route::delete('{id}', [InventoryController::class, 'destroy']); // حذف موجودی
+});
 
+
+
+// Route::post('/inventory-changes', [InventoryChangeController::class, 'store']);
+Route::prefix('inventory-changes')->group(function () {
+    Route::get('/', [InventoryChangeController::class, 'index']); // لیست همه تغییرات
+    Route::get('/{id}', [InventoryChangeController::class, 'show']); // نمایش یک تغییر خاص
+    Route::post('/', [InventoryChangeController::class, 'store']); // ایجاد تغییر جدید
+    Route::put('/{id}', [InventoryChangeController::class, 'update']); // ویرایش تغییر
+    Route::delete('/{id}', [InventoryChangeController::class, 'destroy']); // حذف تغییر
+});
