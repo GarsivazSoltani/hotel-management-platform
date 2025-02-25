@@ -1,0 +1,80 @@
+/* src/components/Products/ProductList.css */
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .product-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .product-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .product-item button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .product-item button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+  }
+  
+  .modal-content {
+    margin-bottom: 20px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .modal-actions button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    color: white;
+  }
+  

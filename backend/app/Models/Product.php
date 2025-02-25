@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Product extends Model
 {
     use HasFactory;
-    
+
+    protected $fillable = ['name', 'description', 'price', 'stock'];
+
     public function inventories()
     {
         return $this->hasMany(Inventory::class, 'product_id');
