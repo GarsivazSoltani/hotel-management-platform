@@ -1,0 +1,31 @@
+/* src/pages/Products/Products.css */
+/* استایل کلی جدول */
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+th, td {
+  text-align: center;
+}
+
+/* بهینه‌سازی برای موبایل */
+@media (max-width: 768px) {
+  /* جدول توی موبایل اسکرول افقی داشته باشه */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* دکمه‌ها توی موبایل کوچک‌تر و فاصله مناسب */
+  .btn {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+  /* پیام‌ها توی موبایل جمع‌تر بشن */
+  .alert {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}

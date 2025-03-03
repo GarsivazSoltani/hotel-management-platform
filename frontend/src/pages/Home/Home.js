@@ -1,11 +1,12 @@
-// src/pages/Home/Home.js
+// src/Pages/Home/Home.js
 import React from 'react';
+import './Home.css'; // CSS جدید
 
 const Home = () => {
   return (
     <div className="container">
-      <h1>Welcome to the Warehouse Management System</h1>
-      <p>This is the home page. Use the navigation menu to explore.</p>
+      <h1>倉庫管理システムへようこそ</h1>
+      <p>ナビゲーションメニューを使用して操作してください。</p>
     </div>
   );
 };

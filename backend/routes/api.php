@@ -23,6 +23,14 @@ Route::prefix('warehouses')->group(function () {
 });
 
 Route::apiResource('products', ProductController::class);
+// Route::prefix('products')->group(function () {
+//     Route::get('/', [ProductController::class, 'index']); // نمایش لیست محصولات
+//     Route::post('/', [ProductController::class, 'store']); // ایجاد محصول جدید
+//     Route::get('{id}', [ProductController::class, 'show']); // نمایش محصول خاص
+//     Route::put('{id}', [ProductController::class, 'update']); // ویرایش محصول
+//     Route::delete('{id}', [ProductController::class, 'destroy']); // حذف محصول
+// });
+
 
 Route::prefix('inventories')->group(function () {
     Route::get('/', [InventoryController::class, 'index']); // نمایش لیست موجودی‌ها

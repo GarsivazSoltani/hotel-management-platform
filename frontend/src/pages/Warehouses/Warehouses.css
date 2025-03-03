@@ -1,0 +1,39 @@
+/* src/pages/Warehouses/Warehouses.css */
+/* استایل کلی */
+h1 {
+  margin-top: 20px;
+}
+
+.card {
+  max-width: 100%;
+}
+
+/* بهینه‌سازی برای موبایل */
+@media (max-width: 768px) {
+  /* جدول توی موبایل اسکرول افقی داشته باشه */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* دکمه‌ها توی موبایل کوچک‌تر و فاصله مناسب */
+  .btn {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+  /* پیام‌ها توی موبایل جمع‌تر بشن */
+  .alert {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  /* فرم توی موبایل جمع‌تر بشه */
+  .card {
+    padding: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+}

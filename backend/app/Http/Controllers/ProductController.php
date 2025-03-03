@@ -16,16 +16,20 @@ class ProductController extends Controller
     // ذخیره محصول جدید
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'unit_type' => 'required|string|max:50',
-            'conversion_rate' => 'nullable|numeric',
-            'description' => 'nullable|string',
-        ]);
-
-        $product = Product::create($request->all());
-
-        return response()->json($product, 201);
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'stock' => 'required|integer|min:0',
+                'price' => 'required|numeric|min:0',
+                'description' => 'nullable|string',
+                'warehouse_id' => 'required|exists:warehouses,id',
+            ]);
+    
+            $product = Product::create($request->only(['name', 'stock', 'price', 'description', 'warehouse_id']));
+            return response()->json($product, 201);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     // دریافت اطلاعات یک محصول خاص بر اساس ID

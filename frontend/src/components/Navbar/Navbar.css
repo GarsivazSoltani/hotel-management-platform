@@ -1,12 +1,20 @@
+/* src/components/Navbar/Navbar.css */
+/* استایل کلی نوار منو */
 .navbar-custom {
-    padding: 1rem;
+  padding: 10px;
+}
+
+/* بهینه‌سازی برای موبایل */
+@media (max-width: 768px) {
+  /* لینک‌ها توی موبایل جمع‌تر بشن */
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 5px 10px;
   }
-  
-  .navbar-custom .nav-link {
-    margin: 0 0.5rem;
+
+  /* منو توی موبایل عمودی بشه */
+  .nav {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .navbar-custom .btn {
-    margin-left: 0.5rem;
-  }
-  
+}
