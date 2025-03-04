@@ -1,12 +1,15 @@
-// src/Pages/Home/Home.js
+// src/pages/Home/Home.js
 import React from 'react';
-import './Home.css'; // CSS جدید
+import { useLanguage } from '../../lang/LanguageContext';
+import './Home.css';
 
 const Home = () => {
+  const { currentLang, translations } = useLanguage();
+
   return (
-    <div className="container">
-      <h1>倉庫管理システムへようこそ</h1>
-      <p>ナビゲーションメニューを使用して操作してください。</p>
+    <div>
+      <h1>{translations[currentLang].welcome || 'خوش آمدید'}</h1>
+      <p>{translations[currentLang].homeMessage || 'این صفحه اصلی سیستم مدیریت آشپزخانه است'}</p>
     </div>
   );
 };

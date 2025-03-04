@@ -7,6 +7,7 @@ use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InventoryChangeController;
+use App\Http\Controllers\ItemRequestController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -47,3 +48,7 @@ Route::prefix('inventory-changes')->group(function () {
     Route::put('/{id}', [InventoryChangeController::class, 'update']); // ویرایش تغییر
     Route::delete('/{id}', [InventoryChangeController::class, 'destroy']); // حذف تغییر
 });
+
+Route::get('/item-requests', [ItemRequestController::class, 'index']);
+Route::post('/item-requests', [ItemRequestController::class, 'store']);
+Route::put('/item-requests/{id}', [ItemRequestController::class, 'update']);

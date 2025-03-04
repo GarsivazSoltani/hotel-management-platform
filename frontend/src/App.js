@@ -5,14 +5,16 @@ import Navbar from './components/Navbar/Navbar';
 import Products from './pages/Products/Products';
 import ProductManagement from './pages/Products/ProductManagement';
 import Home from './pages/Home/Home';
-import Warehouses from './pages/Warehouses/Warehouses'; // اضافه کردن Warehouses
+import Warehouses from './pages/Warehouses/Warehouses';
+import Tasks from './pages/Tasks/Tasks';
 import { getProducts } from './services/productService';
+import { LanguageProvider } from './lang/LanguageContext';
+import translations from './lang/translations';
 
-// کامپوننت اصلی برنامه
 const App = () => {
   const [loading, setLoading] = useState(true);
+  const [currentLang, setCurrentLang] = useState(localStorage.getItem('lang') || 'fa');
 
-  // لود اولیه محصولات برای اطمینان از کارکرد API
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -26,21 +28,27 @@ const App = () => {
     fetchProducts();
   }, []);
 
-  // نمایش وضعیت بارگذاری
-  if (loading) return <div>在庫読み込み中...</div>;
+  useEffect(() => {
+    localStorage.setItem('lang', currentLang);
+  }, [currentLang]);
+
+  if (loading) return <div>{translations[currentLang].loading}</div>;
 
   return (
-    <Router>
-      <Navbar />
-      <div className="container mt-5">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/manage-products" element={<ProductManagement />} />
-          <Route path="/warehouses" element={<Warehouses />} /> {/* روت جدید */}
-        </Routes>
-      </div>
-    </Router>
+    <LanguageProvider value={{ currentLang, setCurrentLang, translations }}>
+      <Router>
+        <Navbar />
+        <div className="container mt-5">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/manage-products" element={<ProductManagement />} />
+            <Route path="/warehouses" element={<Warehouses />} />
+            <Route path="/tasks" element={<Tasks />} />
+          </Routes>
+        </div>
+      </Router>
+    </LanguageProvider>
   );
 };
 
