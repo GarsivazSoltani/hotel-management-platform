@@ -1,5 +1,5 @@
 // src/components/Navbar/Navbar.js
-import React, { useState, useEffect } from 'react'; // اضافه کردن useState
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Badge, Form } from 'react-bootstrap';
 import { getItemRequests } from '../../services/productService';
@@ -10,17 +10,20 @@ const Navbar = () => {
   const { currentLang, setCurrentLang, translations } = useLanguage();
   const [pendingTasks, setPendingTasks] = useState(0);
 
+  // تابع بروزرسانی تعداد تسک‌ها
+  const fetchPendingTasks = async () => {
+    try {
+      const data = await getItemRequests();
+      const pending = data.filter((req) => req.status === 'pending').length;
+      setPendingTasks(pending);
+    } catch (error) {
+      console.error('خطا در دریافت تسک‌ها:', error);
+    }
+  };
+
   useEffect(() => {
-    const fetchPendingTasks = async () => {
-      try {
-        const data = await getItemRequests();
-        const pending = data.filter((req) => req.status === 'pending').length;
-        setPendingTasks(pending);
-      } catch (error) {
-        console.error('خطا در دریافت تسک‌ها:', error);
-      }
-    };
-    fetchPendingTasks();
+    fetchPendingTasks(); // بارگذاری اولیه
+    // می‌تونیم بعداً از polling یا WebSocket برای آپدیت لحظه‌ای استفاده کنیم
   }, []);
 
   return (
@@ -33,6 +36,11 @@ const Navbar = () => {
         <li>
           <Link to="/tasks" className="nav-link px-2 text-white">
             {translations[currentLang].tasks} {pendingTasks > 0 && <Badge bg="danger">{pendingTasks}</Badge>}
+          </Link>
+        </li>
+        <li>
+          <Link to="/requests" className="nav-link px-2 text-white">
+            {translations[currentLang].manageProducts.replace('محصولات', 'درخواست‌ها')}
           </Link>
         </li>
       </ul>

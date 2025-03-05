@@ -35,11 +35,25 @@ class ItemRequestController extends Controller
     {
         $itemRequest = ItemRequest::findOrFail($id);
         $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'warehouse_id' => 'required|exists:warehouses,id',
+            'quantity' => 'required|integer|min:1',
+            'direction' => 'required|in:out,in',
+            'note' => 'nullable|string',
+            'priority' => 'required|in:1,2',
             'status' => 'required|in:pending,done',
-            'completed_by' => 'required_if:status,done|exists:users,id',
+            'completed_by' => 'nullable|exists:users,id'
         ]);
 
-        $itemRequest->update($request->only(['status', 'completed_by']));
+        $itemRequest->update($request->all());
+        // $itemRequest->update($request->only(['status', 'completed_by']));
         return response()->json($itemRequest);
+    }
+
+    public function destroy($id)
+    {
+        $itemRequest = ItemRequest::findOrFail($id);
+        $itemRequest->delete();
+        return response()->json(['message' => 'Request deleted successfully'], 200);
     }
 }

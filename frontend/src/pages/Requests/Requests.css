@@ -1,0 +1,26 @@
+/* src/pages/Requests/Requests.css */
+table {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  
+    .btn {
+      font-size: 0.8rem;
+      padding: 4px 8px;
+    }
+  
+    .alert {
+      font-size: 0.9rem;
+      padding: 8px;
+    }
+  }

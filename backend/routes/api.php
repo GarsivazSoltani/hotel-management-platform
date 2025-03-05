@@ -49,6 +49,9 @@ Route::prefix('inventory-changes')->group(function () {
     Route::delete('/{id}', [InventoryChangeController::class, 'destroy']); // حذف تغییر
 });
 
-Route::get('/item-requests', [ItemRequestController::class, 'index']);
-Route::post('/item-requests', [ItemRequestController::class, 'store']);
-Route::put('/item-requests/{id}', [ItemRequestController::class, 'update']);
+
+// routes/api.php
+Route::apiResource('item-requests', ItemRequestController::class);
+// Route::get('/item-requests', [ItemRequestController::class, 'index']);
+// Route::post('/item-requests', [ItemRequestController::class, 'store']);
+// Route::put('/item-requests/{id}', [ItemRequestController::class, 'update']);

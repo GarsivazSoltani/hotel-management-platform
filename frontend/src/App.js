@@ -10,6 +10,7 @@ import Tasks from './pages/Tasks/Tasks';
 import { getProducts } from './services/productService';
 import { LanguageProvider } from './lang/LanguageContext';
 import translations from './lang/translations';
+import Requests from './pages/Requests/Requests'; // اضافه کردن صفحه جدید
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -45,6 +46,7 @@ const App = () => {
             <Route path="/manage-products" element={<ProductManagement />} />
             <Route path="/warehouses" element={<Warehouses />} />
             <Route path="/tasks" element={<Tasks />} />
+            <Route path="/requests" element={<Requests />} /> {/* مسیر جدید */}
           </Routes>
         </div>
       </Router>

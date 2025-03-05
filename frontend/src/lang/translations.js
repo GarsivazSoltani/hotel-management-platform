@@ -56,6 +56,7 @@ const translations = {
     addNewWarehouse: "اضافه کردن انبار جدید",
     edit: "ویرایش",
     cancel: "لغو",
+    taskDetails: "جزئیات تسک",
   },
   ja: {
     loading: "読み込み中...",
@@ -113,6 +114,7 @@ const translations = {
     addNewWarehouse: "新しい倉庫を追加",
     edit: "編集",
     cancel: "キャンセル",
+    taskDetails: "タスク詳細",
   },
   en: {
     loading: "Loading...",
@@ -170,6 +172,7 @@ const translations = {
     addNewWarehouse: "Add New Warehouse",
     edit: "Edit",
     cancel: "Cancel",
+    taskDetails: "Task Details",
   },
 };
 
